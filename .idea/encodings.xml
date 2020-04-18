@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/experiment1_BoyuGuan/homework_datastruct/big_category.cpp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/experiment1_BoyuGuan/homework_datastruct/big_category.h" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/experiment1_BoyuGuan/homework_datastruct/linklist.cpp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/experiment1_BoyuGuan/homework_datastruct/linklist.h" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/experiment1_BoyuGuan/homework_datastruct/register.cpp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/experiment1_BoyuGuan/homework_datastruct/register.h" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/experiment1_BoyuGuan/homework_datastruct/search.cpp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/experiment1_BoyuGuan/homework_datastruct/supermarket.cpp" charset="UTF-8" />
+  </component>
+</project>

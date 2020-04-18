@@ -2,7 +2,7 @@
 
 
 
-big_category init_Supermarket() //给超市初始化
+big_category init_Supermarket() //缁欒秴甯傚垵濮嬪寲
 {
 	big_category catalog ;
 	init_big_category(catalog);

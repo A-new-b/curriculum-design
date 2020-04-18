@@ -1,7 +1,7 @@
 #pragma once
 #include "linklist.h"
 
-//商品类型
+//鍟嗗搧绫诲瀷
 
 
 typedef struct  big_category_node {

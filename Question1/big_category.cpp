@@ -4,9 +4,9 @@ void init_big_category(big_category &L)
 {
 	L = (big_category)malloc(sizeof(big_category_node));
 	InitList_L(L->small_category);
-	if (!L)   exit(1);                        // 存储分配失败
-	strcpy_s(L->category_Name, "food");//初始门类设为食品
-	L->next_big_category = NULL;                            // 表头结点的指针域置空
+	if (!L)   exit(1);                        // 瀛樺偍鍒嗛厤澶辫触
+	strcpy_s(L->category_Name, "food");//鍒濆闂ㄧ被璁句负椋熷搧
+	L->next_big_category = NULL;                            // 琛ㄥご缁撶偣鐨勬寚閽堝煙缃┖
 }
 
 void add_big_category(big_category &L ,const char a[] )

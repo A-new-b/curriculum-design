@@ -1,11 +1,11 @@
 #include "register.h"
 
-void new_Item(big_category &catalog, ElemType e) //ÉÌÆ·ÐÂµ½»õ
+void new_Item(big_category &catalog, ElemType e) //å•†å“æ–°åˆ°è´§
 {
 	big_category p = catalog;
 	while (p->next_big_category && strcmp(p->category_Name, e.category)) //
 		p = p->next_big_category;
-	if (!strcmp(p->category_Name, e.category)) //Èç¹ûÓÐ´óÀàÐÍÖÐµÄ´ËÀàÎïÆ·
+	if (!strcmp(p->category_Name, e.category)) //å¦‚æžœæœ‰å¤§ç±»åž‹ä¸­çš„æ­¤ç±»ç‰©å“
 		add_item(p->small_category,e);
 	else
 	{

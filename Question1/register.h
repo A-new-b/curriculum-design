@@ -1,7 +1,7 @@
 #pragma once
 #include "supermarket.h"
 
-//ÉÏĞÂÎïÆ·¼ì²é
+//ä¸Šæ–°ç‰©å“æ£€æŸ¥
 
 void new_Item(big_category &catalog, ElemType e);
 
