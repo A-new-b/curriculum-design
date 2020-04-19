@@ -1,6 +1,6 @@
 #include "search.h"
 
-LinkList search_Item( big_category category ,const char name[]) //²éÕÒÉÌÆ·
+LinkList search_Item( big_category category ,const char name[]) //æŸ¥æ‰¾å•†å“
 {
 	big_category q = category;
 	while (q)
