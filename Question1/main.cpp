@@ -1,17 +1,11 @@
+#include "mainwindow.h"
 
-#include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-#include "supermarket.h"
-#include "register.h"
-#include "search.h"
+#include <QApplication>
 
-using namespace std;
-
-
-int main() {
-	big_category category = init_Supermarket();
-	new_Item(category, { 0, for_count, 11, 20, "sd","test" });
-	cout << search_Items_Sold_Out(category);
-	return 0;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    return a.exec();
 }

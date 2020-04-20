@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>40</y>
+      <width>180</width>
+      <height>118</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="create">
+         <property name="text">
+          <string>新建商品</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="in">
+         <property name="text">
+          <string>商品入库</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QPushButton" name="change">
+         <property name="text">
+          <string>修改商品</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="out">
+         <property name="text">
+          <string>商品出库</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>190</y>
+      <width>527</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1,8,2,2">
+     <item>
+      <widget class="QRadioButton" name="radioButton">
+       <property name="text">
+        <string>名称</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioButton_2">
+       <property name="text">
+        <string>类别</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="searchContent"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="search">
+       <property name="text">
+        <string>查询</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="stat">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>统计</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>30</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
