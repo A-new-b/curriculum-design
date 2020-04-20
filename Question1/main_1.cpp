@@ -12,8 +12,6 @@ using namespace std;
 int main() {
 	big_category category = init_Supermarket();
 	new_Item(category, { 0, for_count, 11, 20, "sd","test" });
-	input_item(category);
-	LinkList p = search_Item(category, "fun");
-	cout << p->data.purePrice;
+	cout << search_Items_Sold_Out(category);
 	return 0;
 }
