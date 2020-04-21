@@ -1,40 +1,40 @@
 #pragma once
 #include <string>
 
-//Ã¿ÖÖÉÌÆ·ÀàĞÍµÄÉÌÆ·Ä¿Â¼
+//æ¯ç§å•†å“ç±»å‹çš„å•†å“ç›®å½•
 
 
 using namespace std;
 
 typedef struct  ElemType
 {
-	int  count , unit; // ÊıÁ¿ µ¥Î»
-	double purePrice, salePrice; // ½ø¼Û ÊÛ¼Û
-	char category[10], name[10]; //ÀàĞÍ ÉÌÆ·Ãû  
+	int  count , unit; // æ•°é‡ å•ä½
+	double purePrice, salePrice; // è¿›ä»· å”®ä»·
+	char category[10], name[10]; //ç±»å‹ å•†å“å  
 }item;
 
 
 typedef struct Node {
 	ElemType data;
 	struct  Node* next;
-}LNode, * LinkList;                 // LinkListÎª½á¹¹ÌåÖ¸ÕëÀàĞÍ
+}LNode, * LinkList;                 // LinkListä¸ºç»“æ„ä½“æŒ‡é’ˆç±»å‹
 
 void InitList_L(LinkList& L);
 
-int ListLength_L(LinkList L);// LÎª´øÍ·½áµãµÄÁ´±íµÄÍ·Ö¸Õë£¬±¾º¯Êı·µ»ØLËùÖ¸Á´±íµÄ³¤¶È
+int ListLength_L(LinkList L);// Lä¸ºå¸¦å¤´ç»“ç‚¹çš„é“¾è¡¨çš„å¤´æŒ‡é’ˆï¼Œæœ¬å‡½æ•°è¿”å›Læ‰€æŒ‡é“¾è¡¨çš„é•¿åº¦
 
 
-LNode* LocateElem_L(LinkList L, string e); // ÔÚLËùÖ¸µÄµ¥Á´±íÖĞ²éÕÒµÚÒ»¸öÖµºÍe ÏàµÈµÄ½áµã£¬Èô´æÔÚ£¬Ôò·µ»ØÆäÖ¸Õë£»
+LNode* LocateElem_L(LinkList L, string e); // åœ¨Læ‰€æŒ‡çš„å•é“¾è¡¨ä¸­æŸ¥æ‰¾ç¬¬ä¸€ä¸ªå€¼å’Œe ç›¸ç­‰çš„ç»“ç‚¹ï¼Œè‹¥å­˜åœ¨ï¼Œåˆ™è¿”å›å…¶æŒ‡é’ˆï¼›
 
-int LocateElem_L_2(LinkList L, string e);// ÔÚLËùÖ¸µÄµ¥Á´±íÖĞ²éÕÒµÚÒ»¸öÖµºÍeÏàµÈµÄ½áµã£¬Èô´æÔÚ£¬Ôò·µ»ØÔªËØË³Ğò(·µ»ØÖµ+2ÎªÕæÊµË³Ğò)£¬·ñÔò·µ»Ø0
+int LocateElem_L_2(LinkList L, string e);// åœ¨Læ‰€æŒ‡çš„å•é“¾è¡¨ä¸­æŸ¥æ‰¾ç¬¬ä¸€ä¸ªå€¼å’Œeç›¸ç­‰çš„ç»“ç‚¹ï¼Œè‹¥å­˜åœ¨ï¼Œåˆ™è¿”å›å…ƒç´ é¡ºåº(è¿”å›å€¼+2ä¸ºçœŸå®é¡ºåº)ï¼Œå¦åˆ™è¿”å›0
 
-bool ListInsert_L(LinkList& L, int i, ElemType e); //ÔÚ´øÓĞÍ·½áµãµÄµ¥Á´±íLÖĞµÄµÚi¸ö½áµãÖ®Ç°²åÈëÔªËØe
+bool ListInsert_L(LinkList& L, int i, ElemType e); //åœ¨å¸¦æœ‰å¤´ç»“ç‚¹çš„å•é“¾è¡¨Lä¸­çš„ç¬¬iä¸ªç»“ç‚¹ä¹‹å‰æ’å…¥å…ƒç´ e
 
-bool ListDelete_L(LinkList& L, int i, ElemType& e); // É¾³ı´øÓĞÍ·½áµãµÄµ¥Á´±íLÖĞµÄµÚi¸ö½áµã£¬²¢ÈÃe·µ»ØÆäÖµ
+bool ListDelete_L(LinkList& L, int i, ElemType& e); // åˆ é™¤å¸¦æœ‰å¤´ç»“ç‚¹çš„å•é“¾è¡¨Lä¸­çš„ç¬¬iä¸ªç»“ç‚¹ï¼Œå¹¶è®©eè¿”å›å…¶å€¼
 
-bool GetElem_L(LinkList L, int i, ElemType& e); // È¡³öµ¥Á´±íLÖĞµÚi¸öÔªËØ£¬²¢ÓÃe·µ»ØÆäÖµ{    
+bool GetElem_L(LinkList L, int i, ElemType& e); // å–å‡ºå•é“¾è¡¨Lä¸­ç¬¬iä¸ªå…ƒç´ ï¼Œå¹¶ç”¨eè¿”å›å…¶å€¼{    
 
-void CreateList_L_Rear(LinkList& L, ElemType a[], int n);// ÒÑÖªÒ»Î¬Êı×éA[n]ÖĞ´æÓĞÏßĞÔ±íµÄÊı¾İÔªËØ£¬ÀûÓÃÎ²²å·¨´´½¨µ¥Á´±íL
+void CreateList_L_Rear(LinkList& L, ElemType a[], int n);// å·²çŸ¥ä¸€ç»´æ•°ç»„A[n]ä¸­å­˜æœ‰çº¿æ€§è¡¨çš„æ•°æ®å…ƒç´ ï¼Œåˆ©ç”¨å°¾æ’æ³•åˆ›å»ºå•é“¾è¡¨L
 
 void CreateList_L_Front(LinkList& L, ElemType a[], int n);
 

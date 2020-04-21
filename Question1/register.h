@@ -2,7 +2,7 @@
 #include "supermarket.h"
 #include <iostream>
 
-//ÉÏĞÂÎïÆ·¼ì²é
+//ä¸Šæ–°ç‰©å“æ£€æŸ¥
 void input_item(big_category& catalog);
 
 void new_Item(big_category &catalog, ElemType e);

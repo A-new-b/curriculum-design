@@ -1,16 +1,18 @@
 
 #include "register.h"
 
-/*int  count , unit; // ÊýÁ¿ µ¥Î»
-	double purePrice, salePrice; // ½ø¼Û ÊÛ¼Û
-	char category[10], name[10]; //ÀàÐÍ ÉÌÆ·Ãû  */
+/*
+    int  count , unit; // æ•°é‡ å•ä½
+	double purePrice, salePrice; // è¿›ä»· å”®ä»·
+	char category[10], name[10]; //ç±»åž‹ å•†å“å
+ */
 
-void new_Item(big_category& catalog, ElemType e) //ÉÌÆ·ÐÂµ½»õ
+void new_Item(big_category& catalog, ElemType e) //å•†å“æ–°åˆ°è´§
 {
 	big_category p = catalog;
 	while (p->next_big_category && strcmp(p->category_Name, e.category)) //
 		p = p->next_big_category;
-	if (!strcmp(p->category_Name, e.category)) //Èç¹ûÓÐ´óÀàÐÍÖÐµÄ´ËÀàÎïÆ·
+	if (!strcmp(p->category_Name, e.category)) //å¦‚æžœæœ‰å¤§ç±»åž‹ä¸­çš„æ­¤ç±»ç‰©å“
 		add_item(p->small_category, e);
 	else
 	{
