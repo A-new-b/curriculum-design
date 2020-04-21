@@ -2,28 +2,28 @@
 
 void InitList_L(LinkList& L)
 {
-	L = (LNode*)malloc(sizeof(LNode));  // ç”³è¯·å­˜æ”¾ä¸€ä¸ªç»“ç‚¹æ•°æ®æ‰€éœ€è¦çš„å†…åœ¨ç©ºé—´
-	if (!L)   exit(1);                        // å­˜å‚¨åˆ†é…å¤±è´¥
-	L->next = NULL;                            // è¡¨å¤´ç»“ç‚¹çš„æŒ‡é’ˆåŸŸç½®ç©º
+	L = (LNode*)malloc(sizeof(LNode));  // ÉêÇë´æ·ÅÒ»¸ö½áµãÊı¾İËùĞèÒªµÄÄÚÔÚ¿Õ¼ä
+	if (!L)   exit(1);                        // ´æ´¢·ÖÅäÊ§°Ü
+	L->next = NULL;                            // ±íÍ·½áµãµÄÖ¸ÕëÓòÖÃ¿Õ
 }
 
 int ListLength_L(LinkList L)
 {
 	LinkList  p;
 	int k = 0;
-	p = L->next;                             // pæŒ‡å‘é“¾è¡¨ä¸­çš„ç¬¬ä¸€ä¸ªç»“ç‚¹
+	p = L->next;                             // pÖ¸ÏòÁ´±íÖĞµÄµÚÒ»¸ö½áµã
 	while (p)
 	{
 		k++;  p = p->next;
-	}              // kè®¡éç©ºç»“ç‚¹æ•°
+	}              // k¼Æ·Ç¿Õ½áµãÊı
 	return k;
 }
 
 LNode* LocateElem_L(LinkList L, string e)
 {
-	// å¦åˆ™è¿”å›ç©ºæŒ‡é’ˆ
+	// ·ñÔò·µ»Ø¿ÕÖ¸Õë
 	LinkList  p;
-	p = L->next;                               // pæŒ‡å‘é“¾è¡¨ä¸­çš„ç¬¬ä¸€ä¸ªç»“ç‚¹
+	p = L->next;                               // pÖ¸ÏòÁ´±íÖĞµÄµÚÒ»¸ö½áµã
 	while (p && p->data.name != e) p = p->next;
 	return p;
 }
@@ -32,7 +32,7 @@ int LocateElem_L_2(LinkList L, string e)
 {
 	int i = 0;
 	LinkList  p;
-	p = L->next;                               // pæŒ‡å‘é“¾è¡¨ä¸­çš„ç¬¬ä¸€ä¸ªç»“ç‚¹
+	p = L->next;                               // pÖ¸ÏòÁ´±íÖĞµÄµÚÒ»¸ö½áµã
 	while (p && p->data.name != e) { p = p->next; i++; }
 	return i;
 }
@@ -42,11 +42,11 @@ bool ListInsert_L(LinkList& L, int i, ElemType e)
 	LinkList p, s;
 	int j;
 	p = L;  j = 0;
-	while (p->next && j < i - 1) { p = p->next; j++; }   // å¯»æ‰¾ç¬¬i-1ä¸ªç»“ç‚¹,å¹¶è®©pæŒ‡å‘æ­¤ç»“ç‚¹
-	if (j != i - 1)   return false;                   // içš„ä½ç½®ä¸åˆç†
-	if ((s = (LNode*)malloc(sizeof(LNode))) == NULL) exit(1);  // å­˜å‚¨åˆ†é…å¤±è´¥
+	while (p->next && j < i - 1) { p = p->next; j++; }   // Ñ°ÕÒµÚi-1¸ö½áµã,²¢ÈÃpÖ¸Ïò´Ë½áµã
+	if (j != i - 1)   return false;                   // iµÄÎ»ÖÃ²»ºÏÀí
+	if ((s = (LNode*)malloc(sizeof(LNode))) == NULL) exit(1);  // ´æ´¢·ÖÅäÊ§°Ü
 	s->data = e;
-	s->next = p->next;  p->next = s;                  // æ’å…¥æ–°ç»“ç‚¹
+	s->next = p->next;  p->next = s;                  // ²åÈëĞÂ½áµã
 	return true;
 }
 
@@ -55,10 +55,10 @@ bool ListDelete_L(LinkList& L, int i, ElemType& e)
 	LinkList p, q;
 	int j;
 	p = L;  j = 0;
-	while (p->next->next && j < i - 1) { p = p->next; j++; } //å¯»æ‰¾ç¬¬i-1ä¸ªç»“ç‚¹,å¹¶è®©pæŒ‡å‘æ­¤ç»“ç‚¹
-	if (j != i - 1)   return false;                     // içš„ä½ç½®ä¸åˆç†
-	q = p->next;                                     // qæŒ‡å‘å…¶åç»§
-	p->next = q->next;                               // åˆ é™¤qæ‰€æŒ‡ç»“ç‚¹
+	while (p->next->next && j < i - 1) { p = p->next; j++; } //Ñ°ÕÒµÚi-1¸ö½áµã,²¢ÈÃpÖ¸Ïò´Ë½áµã
+	if (j != i - 1)   return false;                     // iµÄÎ»ÖÃ²»ºÏÀí
+	q = p->next;                                     // qÖ¸ÏòÆäºó¼Ì
+	p->next = q->next;                               // É¾³ıqËùÖ¸½áµã
 	e = q->data;    free(q);
 	return true;
 }
@@ -68,37 +68,37 @@ bool GetElem_L(LinkList L, int i, ElemType& e)
 	LinkList p;
 	int j;
 	p = L;  j = 0;
-	while (p->next && j < i) { p = p->next; j++; }  // å¯»æ‰¾ç¬¬iä¸ªç»“ç‚¹,å¹¶è®©pæŒ‡å‘æ­¤ç»“ç‚¹
-	if (j != i)   return false;                      // içš„ä½ç½®ä¸åˆç†
-	e = p->data;                                     // è¢«å–å…ƒç´ çš„å€¼èµ‹ç»™e
+	while (p->next && j < i) { p = p->next; j++; }  // Ñ°ÕÒµÚi¸ö½áµã,²¢ÈÃpÖ¸Ïò´Ë½áµã
+	if (j != i)   return false;                      // iµÄÎ»ÖÃ²»ºÏÀí
+	e = p->data;                                     // ±»È¡ÔªËØµÄÖµ¸³¸øe
 	return true;
 }
 
 void CreateList_L_Rear(LinkList& L, ElemType a[], int n)
 {
 	LinkList p, q;   int i;
-	L = (LinkList)malloc(sizeof(LNode));    // åˆ›å»ºç«‹å¤´ç»“ç‚¹
-	q = L;                                // qå§‹ç»ˆæŒ‡å‘å°¾ç»“ç‚¹ï¼Œå¼€å§‹æ—¶å°¾ç»“ç‚¹ä¹Ÿæ˜¯å¤´ç»“ç‚¹
+	L = (LinkList)malloc(sizeof(LNode));    // ´´½¨Á¢Í·½áµã
+	q = L;                                // qÊ¼ÖÕÖ¸ÏòÎ²½áµã£¬¿ªÊ¼Ê±Î²½áµãÒ²ÊÇÍ·½áµã
 	for (i = 0; i < n; i++)
 	{
-		p = (LinkList)malloc(sizeof(LNode));          // åˆ›å»ºæ–°ç»“ç‚¹
-		p->data = a[i];                               // èµ‹å…ƒç´ å€¼
-		q->next = p;                                  // æ’å…¥åœ¨å°¾ç»“ç‚¹ä¹‹å
-		q = p;                                         // qæŒ‡å‘æ–°çš„è¡¨å°¾
+		p = (LinkList)malloc(sizeof(LNode));          // ´´½¨ĞÂ½áµã
+		p->data = a[i];                               // ¸³ÔªËØÖµ
+		q->next = p;                                  // ²åÈëÔÚÎ²½áµãÖ®ºó
+		q = p;                                         // qÖ¸ÏòĞÂµÄ±íÎ²
 	}
-	q->next = NULL;                                    // è¡¨å°¾ç»“ç‚¹nextåŸŸç½®ç©º
+	q->next = NULL;                                    // ±íÎ²½áµãnextÓòÖÃ¿Õ
 }
 
 void CreateList_L_Front(LinkList& L, ElemType a[], int n)
-{    // å·²çŸ¥ä¸€ç»´æ•°ç»„A[n]ä¸­å­˜æœ‰çº¿æ€§è¡¨çš„æ•°æ®å…ƒç´ ï¼Œåˆ©ç”¨å¤´æ’æ³•åˆ›å»ºå•é“¾è¡¨L
+{    // ÒÑÖªÒ»Î¬Êı×éA[n]ÖĞ´æÓĞÏßĞÔ±íµÄÊı¾İÔªËØ£¬ÀûÓÃÍ·²å·¨´´½¨µ¥Á´±íL
 	LinkList p;   int i;
-	L = (LinkList)malloc(sizeof(LNode));              //åˆ›å»ºç«‹å¤´ç»“ç‚¹
+	L = (LinkList)malloc(sizeof(LNode));              //´´½¨Á¢Í·½áµã
 	L->next = NULL;
 	for (i = n - 1; i >= 0; i--)
 	{
-		p = (LinkList)malloc(sizeof(LNode));           //åˆ›å»ºæ–°ç»“ç‚¹
-		p->data = a[i];                                // èµ‹å…ƒç´ å€¼
-		p->next = L->next;                          // æ’å…¥åœ¨å¤´ç»“ç‚¹å’Œç¬¬ä¸€ä¸ªç»“ç‚¹ä¹‹é—´
+		p = (LinkList)malloc(sizeof(LNode));           //´´½¨ĞÂ½áµã
+		p->data = a[i];                                // ¸³ÔªËØÖµ
+		p->next = L->next;                          // ²åÈëÔÚÍ·½áµãºÍµÚÒ»¸ö½áµãÖ®¼ä
 		L->next = p;
 	}
 }

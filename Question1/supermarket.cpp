@@ -16,4 +16,18 @@ big_category init_Supermarket() //ç»™è¶…å¸‚åˆå§‹åŒ–
 	return catalog;
 }
 
+big_category closedown(big_category catalog) //³¬ÊÐµ¹±Õ
+{
+	big_category p = catalog;
+	big_category q= p->next_big_category;
+	while (q)
+	{
+		DestroyList_L(p->small_category);
+		p = q;
+		q = q->next_big_category;
+	}
+	free(p);
+	return big_category();
+}
+
 
