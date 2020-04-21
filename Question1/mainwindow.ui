@@ -17,9 +17,9 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>40</y>
-      <width>180</width>
+      <x>40</x>
+      <y>70</y>
+      <width>541</width>
       <height>118</height>
      </rect>
     </property>
@@ -27,14 +27,14 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="create">
+        <widget class="QPushButton" name="category_create">
          <property name="text">
           <string>新建商品</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="in">
+        <widget class="QPushButton" name="goods_in">
          <property name="text">
           <string>商品入库</string>
          </property>
@@ -45,14 +45,14 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QPushButton" name="change">
+        <widget class="QPushButton" name="category_update">
          <property name="text">
           <string>修改商品</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="out">
+        <widget class="QPushButton" name="goods_out">
          <property name="text">
           <string>商品出库</string>
          </property>
@@ -65,9 +65,9 @@
    <widget class="QWidget" name="layoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>190</y>
-      <width>527</width>
+      <x>40</x>
+      <y>200</y>
+      <width>541</width>
       <height>36</height>
      </rect>
     </property>
@@ -97,7 +97,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="stat">
+      <widget class="QPushButton" name="sum">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -110,6 +110,26 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QTableView" name="category_table">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>260</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTableView" name="goods_table">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>260</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -12,3 +12,12 @@ category::~category()
 {
     delete ui;
 }
+
+void category::on_buttonBox_rejected()
+{
+    this ->reject();
+}
+void category::setInfoContent(QString a)
+{
+    this ->ui->Info->setText(a);
+}
