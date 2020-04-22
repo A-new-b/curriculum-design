@@ -16,7 +16,7 @@ CC            = gcc
 CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
+CXXFLAGS      = -pipe -g -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 INCPATH       = -I../Question1 -I. -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++
 QMAKE         = /usr/bin/qmake
 DEL_FILE      = rm -f
@@ -53,17 +53,29 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Question1/category.cpp \
+		../Question1/goods_in.cpp \
+		../Question1/goods_out.cpp \
 		../Question1/main.cpp \
 		../Question1/mainwindow.cpp \
 		../Question1/linklist.cpp \
-		../Question1/big_category.cpp moc_category.cpp \
+		../Question1/big_category.cpp \
+		../Question1/search.cpp \
+		../Question1/supermarket.cpp moc_category.cpp \
+		moc_goods_in.cpp \
+		moc_goods_out.cpp \
 		moc_mainwindow.cpp
 OBJECTS       = category.o \
+		goods_in.o \
+		goods_out.o \
 		main.o \
 		mainwindow.o \
 		linklist.o \
 		big_category.o \
+		search.o \
+		supermarket.o \
 		moc_category.o \
+		moc_goods_in.o \
+		moc_goods_out.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
@@ -354,13 +366,21 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		../Question1/Question1.pro ../Question1/category.h \
+		../Question1/goods_in.h \
+		../Question1/goods_out.h \
 		../Question1/mainwindow.h \
 		../Question1/linklist.h \
-		../Question1/big_category.h ../Question1/category.cpp \
+		../Question1/big_category.h \
+		../Question1/search.h \
+		../Question1/supermarket.h ../Question1/category.cpp \
+		../Question1/goods_in.cpp \
+		../Question1/goods_out.cpp \
 		../Question1/main.cpp \
 		../Question1/mainwindow.cpp \
 		../Question1/linklist.cpp \
-		../Question1/big_category.cpp
+		../Question1/big_category.cpp \
+		../Question1/search.cpp \
+		../Question1/supermarket.cpp
 QMAKE_TARGET  = Question1
 DESTDIR       = 
 TARGET        = Question1
@@ -369,7 +389,7 @@ TARGET        = Question1
 first: all
 ####### Build rules
 
-Question1: ui_category.h ui_mainwindow.h $(OBJECTS)  
+Question1: ui_category.h ui_goods_in.h ui_goods_out.h ui_mainwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Question1/Question1.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mkspecs/features/spec_pre.prf \
@@ -966,9 +986,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Question1/category.h ../Question1/mainwindow.h ../Question1/linklist.h ../Question1/big_category.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Question1/category.cpp ../Question1/main.cpp ../Question1/mainwindow.cpp ../Question1/linklist.cpp ../Question1/big_category.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Question1/category.ui ../Question1/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Question1/category.h ../Question1/goods_in.h ../Question1/goods_out.h ../Question1/mainwindow.h ../Question1/linklist.h ../Question1/big_category.h ../Question1/search.h ../Question1/supermarket.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Question1/category.cpp ../Question1/goods_in.cpp ../Question1/goods_out.cpp ../Question1/main.cpp ../Question1/mainwindow.cpp ../Question1/linklist.cpp ../Question1/big_category.cpp ../Question1/search.cpp ../Question1/supermarket.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Question1/category.ui ../Question1/goods_in.ui ../Question1/goods_out.ui ../Question1/mainwindow.ui $(DISTDIR)/
 	$(COPY_FILE) --parents Question1_zh_CN.ts $(DISTDIR)/
 
 
@@ -999,17 +1019,46 @@ compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
-	g++ -pipe -g -std=gnu++11 -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
+	g++ -pipe -g -std=gnu++1y -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_category.cpp moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_category.cpp moc_goods_in.cpp moc_goods_out.cpp moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_category.cpp moc_mainwindow.cpp
+	-$(DEL_FILE) moc_category.cpp moc_goods_in.cpp moc_goods_out.cpp moc_mainwindow.cpp
 moc_category.cpp: ../Question1/category.h \
+		../Question1/mainwindow.h \
+		../Question1/big_category.h \
+		../Question1/linklist.h \
+		../Question1/supermarket.h \
+		../Question1/search.h \
 		moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/jue/Desktop/curriculum-design/build-Question1-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/jue/Desktop/curriculum-design/Question1 -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/9.3.0 -I/usr/include/c++/9.3.0/x86_64-pc-linux-gnu -I/usr/include/c++/9.3.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed -I/usr/include ../Question1/category.h -o moc_category.cpp
 
+moc_goods_in.cpp: ../Question1/goods_in.h \
+		../Question1/mainwindow.h \
+		../Question1/big_category.h \
+		../Question1/linklist.h \
+		../Question1/supermarket.h \
+		../Question1/search.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include /home/jue/Desktop/curriculum-design/build-Question1-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/jue/Desktop/curriculum-design/Question1 -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/9.3.0 -I/usr/include/c++/9.3.0/x86_64-pc-linux-gnu -I/usr/include/c++/9.3.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed -I/usr/include ../Question1/goods_in.h -o moc_goods_in.cpp
+
+moc_goods_out.cpp: ../Question1/goods_out.h \
+		../Question1/mainwindow.h \
+		../Question1/big_category.h \
+		../Question1/linklist.h \
+		../Question1/supermarket.h \
+		../Question1/search.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include /home/jue/Desktop/curriculum-design/build-Question1-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/jue/Desktop/curriculum-design/Question1 -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/9.3.0 -I/usr/include/c++/9.3.0/x86_64-pc-linux-gnu -I/usr/include/c++/9.3.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed -I/usr/include ../Question1/goods_out.h -o moc_goods_out.cpp
+
 moc_mainwindow.cpp: ../Question1/mainwindow.h \
+		../Question1/big_category.h \
+		../Question1/linklist.h \
+		../Question1/supermarket.h \
+		../Question1/search.h \
 		moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/jue/Desktop/curriculum-design/build-Question1-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/jue/Desktop/curriculum-design/Question1 -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/9.3.0 -I/usr/include/c++/9.3.0/x86_64-pc-linux-gnu -I/usr/include/c++/9.3.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed -I/usr/include ../Question1/mainwindow.h -o moc_mainwindow.cpp
@@ -1018,12 +1067,20 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_category.h ui_mainwindow.h
+compiler_uic_make_all: ui_category.h ui_goods_in.h ui_goods_out.h ui_mainwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_category.h ui_mainwindow.h
+	-$(DEL_FILE) ui_category.h ui_goods_in.h ui_goods_out.h ui_mainwindow.h
 ui_category.h: ../Question1/category.ui \
 		/usr/bin/uic
 	/usr/bin/uic ../Question1/category.ui -o ui_category.h
+
+ui_goods_in.h: ../Question1/goods_in.ui \
+		/usr/bin/uic
+	/usr/bin/uic ../Question1/goods_in.ui -o ui_goods_in.h
+
+ui_goods_out.h: ../Question1/goods_out.ui \
+		/usr/bin/uic
+	/usr/bin/uic ../Question1/goods_out.ui -o ui_goods_out.h
 
 ui_mainwindow.h: ../Question1/mainwindow.ui \
 		/usr/bin/uic
@@ -1040,14 +1097,48 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 ####### Compile
 
 category.o: ../Question1/category.cpp ../Question1/category.h \
+		../Question1/mainwindow.h \
+		../Question1/big_category.h \
+		../Question1/linklist.h \
+		../Question1/supermarket.h \
+		../Question1/search.h \
 		ui_category.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o category.o ../Question1/category.cpp
 
-main.o: ../Question1/main.cpp ../Question1/mainwindow.h
+goods_in.o: ../Question1/goods_in.cpp ../Question1/goods_in.h \
+		../Question1/mainwindow.h \
+		../Question1/big_category.h \
+		../Question1/linklist.h \
+		../Question1/supermarket.h \
+		../Question1/search.h \
+		ui_goods_in.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o goods_in.o ../Question1/goods_in.cpp
+
+goods_out.o: ../Question1/goods_out.cpp ../Question1/goods_out.h \
+		../Question1/mainwindow.h \
+		../Question1/big_category.h \
+		../Question1/linklist.h \
+		../Question1/supermarket.h \
+		../Question1/search.h \
+		ui_goods_out.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o goods_out.o ../Question1/goods_out.cpp
+
+main.o: ../Question1/main.cpp ../Question1/mainwindow.h \
+		../Question1/big_category.h \
+		../Question1/linklist.h \
+		../Question1/supermarket.h \
+		../Question1/search.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Question1/main.cpp
 
 mainwindow.o: ../Question1/mainwindow.cpp ../Question1/mainwindow.h \
-		ui_mainwindow.h
+		../Question1/big_category.h \
+		../Question1/linklist.h \
+		../Question1/supermarket.h \
+		../Question1/search.h \
+		ui_mainwindow.h \
+		../Question1/category.h \
+		../Question1/goods_in.h \
+		../Question1/goods_out.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Question1/mainwindow.cpp
 
 linklist.o: ../Question1/linklist.cpp ../Question1/linklist.h
@@ -1057,8 +1148,25 @@ big_category.o: ../Question1/big_category.cpp ../Question1/big_category.h \
 		../Question1/linklist.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o big_category.o ../Question1/big_category.cpp
 
+search.o: ../Question1/search.cpp ../Question1/search.h \
+		../Question1/big_category.h \
+		../Question1/linklist.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o search.o ../Question1/search.cpp
+
+supermarket.o: ../Question1/supermarket.cpp ../Question1/supermarket.h \
+		../Question1/linklist.h \
+		../Question1/big_category.h \
+		../Question1/search.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o supermarket.o ../Question1/supermarket.cpp
+
 moc_category.o: moc_category.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_category.o moc_category.cpp
+
+moc_goods_in.o: moc_goods_in.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_goods_in.o moc_goods_in.cpp
+
+moc_goods_out.o: moc_goods_out.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_goods_out.o moc_goods_out.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

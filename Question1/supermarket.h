@@ -5,6 +5,6 @@
 
 enum  unit {weight , for_count};
 
-big_category init_Supermarket( );
+big_category init_Supermarket();
 
-big_category closedown(big_category catalog);
+big_category close_down(big_category catalog);

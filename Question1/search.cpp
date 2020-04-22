@@ -1,5 +1,5 @@
 #include "search.h"
-
+#include <cstring>
 LinkList search_Item( big_category category ,const char name[]) //查找商品
 {
 	big_category q = category;

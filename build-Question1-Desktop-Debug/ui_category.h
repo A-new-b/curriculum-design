@@ -27,10 +27,8 @@ public:
     QLabel *Info;
     QWidget *formLayoutWidget;
     QFormLayout *formLayout;
-    QLabel *label_2;
-    QLabel *label;
-    QLineEdit *lineEdit;
-    QLineEdit *lineEdit_2;
+    QLabel *category_name;
+    QLineEdit *category_2;
 
     void setupUi(QDialog *category)
     {
@@ -51,25 +49,15 @@ public:
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
-        label_2 = new QLabel(formLayoutWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        category_name = new QLabel(formLayoutWidget);
+        category_name->setObjectName(QString::fromUtf8("category_name"));
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
+        formLayout->setWidget(0, QFormLayout::LabelRole, category_name);
 
-        label = new QLabel(formLayoutWidget);
-        label->setObjectName(QString::fromUtf8("label"));
+        category_2 = new QLineEdit(formLayoutWidget);
+        category_2->setObjectName(QString::fromUtf8("category_2"));
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, label);
-
-        lineEdit = new QLineEdit(formLayoutWidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-
-        formLayout->setWidget(0, QFormLayout::FieldRole, lineEdit);
-
-        lineEdit_2 = new QLineEdit(formLayoutWidget);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-
-        formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit_2);
+        formLayout->setWidget(0, QFormLayout::FieldRole, category_2);
 
 
         retranslateUi(category);
@@ -83,8 +71,7 @@ public:
     {
         category->setWindowTitle(QCoreApplication::translate("category", "Dialog", nullptr));
         Info->setText(QCoreApplication::translate("category", "TextLabel", nullptr));
-        label_2->setText(QCoreApplication::translate("category", "TextLabel", nullptr));
-        label->setText(QCoreApplication::translate("category", "TextLabel", nullptr));
+        category_name->setText(QCoreApplication::translate("category", "\347\247\215\347\261\273\345\220\215", nullptr));
     } // retranslateUi
 
 };

@@ -2,7 +2,8 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += console c++14
+#QMAKE_CXXFLAGS += -std=c++14
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -17,19 +18,29 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     category.cpp \
+    goods_in.cpp \
+    goods_out.cpp \
     main.cpp \
     mainwindow.cpp\
     linklist.cpp\
-    big_category.cpp
+    big_category.cpp\
+    search.cpp\
+    supermarket.cpp\
 
 HEADERS += \
     category.h \
+    goods_in.h \
+    goods_out.h \
     mainwindow.h\
     linklist.h\
-    big_category.h
+    big_category.h\
+    search.h\
+    supermarket.h
 
 FORMS += \
     category.ui \
+    goods_in.ui \
+    goods_out.ui \
     mainwindow.ui
 
 TRANSLATIONS += \

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Question1/linklist.cpp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Question1/linklist.h" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Question1/register.cpp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Question1/register.h" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Question1/supermarket.cpp" charset="GB18030" />
     <file url="file://$PROJECT_DIR$/experiment1_BoyuGuan/homework_datastruct/big_category.cpp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/experiment1_BoyuGuan/homework_datastruct/big_category.h" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/experiment1_BoyuGuan/homework_datastruct/linklist.cpp" charset="UTF-8" />

@@ -19,7 +19,7 @@
      <rect>
       <x>40</x>
       <y>70</y>
-      <width>541</width>
+      <width>701</width>
       <height>118</height>
      </rect>
     </property>
@@ -29,7 +29,7 @@
        <item>
         <widget class="QPushButton" name="category_create">
          <property name="text">
-          <string>新建商品</string>
+          <string>新建种类</string>
          </property>
         </widget>
        </item>
@@ -47,7 +47,7 @@
        <item>
         <widget class="QPushButton" name="category_update">
          <property name="text">
-          <string>修改商品</string>
+          <string>修改种类</string>
          </property>
         </widget>
        </item>
@@ -62,61 +62,12 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>200</y>
-      <width>541</width>
-      <height>36</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1,8,2,2">
-     <item>
-      <widget class="QRadioButton" name="radioButton">
-       <property name="text">
-        <string>名称</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="radioButton_2">
-       <property name="text">
-        <string>类别</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="searchContent"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="search">
-       <property name="text">
-        <string>查询</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="sum">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>统计</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QTableView" name="category_table">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>260</y>
-      <width>256</width>
+      <y>210</y>
+      <width>201</width>
       <height>192</height>
      </rect>
     </property>
@@ -124,9 +75,9 @@
    <widget class="QTableView" name="goods_table">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>260</y>
-      <width>256</width>
+      <x>260</x>
+      <y>210</y>
+      <width>481</width>
       <height>192</height>
      </rect>
     </property>
