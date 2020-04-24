@@ -109,6 +109,31 @@ QStandardItemModel* MainWindow::getItemsModel(int position){//int 重载
     return model ;
 }//基于第一个model的位置显示第二个model的数据
 
+QStandardItemModel* MainWindow::getItemsModel(LinkList q){//LinkList 重载
+    QStandardItemModel* model=new QStandardItemModel();
+    QString label="数量,单位,进价,售价,商品名";
+    QStringList labels=label.split(',');
+    model->setHorizontalHeaderLabels(labels);
+//    auto num=index.model()->index(index.row(),0);
+//    int position=num.data().toInt();//获取当前行的编号
+//    big_category p = &market_first_node;
+//    p = find_category_byindex(p,position-1);//寻找商品
+    int row_number =0;//行数
+    LinkList g = q;
+    while (g!=nullptr) {
+        model->insertRow(row_number);
+//        model->setData(model->index(row_number, 0), row_number+1);
+        model->setData(model->index(row_number, 0), g ->data.count);
+        model->setData(model->index(row_number, 1), g->data.unit);
+        model->setData(model->index(row_number, 2), g->data.purePrice);
+        model->setData(model->index(row_number, 3), g->data.salePrice);
+        model->setData(model->index(row_number, 4), g->data.name);
+        g = g ->next;
+        row_number++;
+    }
+    return model ;
+}//基于第一个model的位置显示第二个model的数据
+
 
 void MainWindow::on_category_table_clicked(const QModelIndex &index)
 {
@@ -170,5 +195,78 @@ void MainWindow::on_goods_out_clicked()
     int g= position_goods.row();
     if (result==QDialog::Accepted){
         new_out.delete_items_goods(position_category.model()->index(position_category.row(),0).data().toInt(),g);//将选中行的编号作为参数
+    }
+}
+
+void MainWindow::on_search_category_clicked()
+{
+    this->market_first_node = this->default_market_node;
+    this->CategoryTableSet(this->getCategoryModel());
+    if(this ->ui->search_content_category->text().toStdString()=="")
+    {
+        this->market_first_node = this->default_market_node;
+        this->CategoryTableSet(this->getCategoryModel());
+    }
+    else
+    {
+        big_category p = &this->market_first_node;
+        p=search_Big_Category(p,this ->ui->search_content_category->text().toStdString().c_str());
+        if(p!=nullptr)
+        {
+            this->market_first_node=*p;
+            this ->market_first_node.next_big_category=nullptr;
+            this->CategoryTableSet(this->getCategoryModel());
+        }
+        else
+        {
+            QMessageBox::information(nullptr,"失败","无该商品种类");
+        }
+    }
+}
+
+
+void MainWindow::on_search_name_clicked()
+{
+    this->market_first_node = this->default_market_node;
+    this->CategoryTableSet(this->getCategoryModel());
+    if(this ->ui->search_name->text().toStdString()==""&&this ->ui->search_category->text().toStdString()=="")
+    {
+        this->market_first_node = this->default_market_node;
+        this->CategoryTableSet(this->getCategoryModel());
+    }
+    else if(this ->ui->search_category->text().toStdString()=="")
+    {
+         QMessageBox::information(nullptr,"","请输入种类名");
+    }
+    else if(this ->ui->search_name->text().toStdString()=="")
+    {
+         QMessageBox::information(nullptr,"","请输入商品名");
+    }
+    else
+    {
+        big_category p = &this->market_first_node;
+        p=search_Big_Category(p,this ->ui->category_in_name->text().toStdString().c_str());
+        if(p!=nullptr)
+        {
+            this->market_first_node=*p;
+            this ->market_first_node.next_big_category=nullptr;
+            this->CategoryTableSet(this->getCategoryModel());
+            LinkList q ;
+            q = search_Item(p,this ->ui->name_in_name->text().toStdString().c_str());
+            if(q !=nullptr)
+            {
+                q->next=nullptr;
+                this ->ItemsTableSet(this ->getItemsModel(q));
+            }
+            else
+            {
+                QMessageBox::information(nullptr,"失败","无该商品名");
+            }
+        }
+        else
+        {
+            QMessageBox::information(nullptr,"失败","无该商品种类");
+        }
+
     }
 }

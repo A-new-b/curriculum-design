@@ -9,7 +9,7 @@ using namespace std;
 typedef struct  ElemType
 {
     int count;
-    int unit; // 数量 单位
+    char unit[15]; // 数量 单位
 	double purePrice, salePrice; // 进价 售价
 	char category[10], name[10]; //类型 商品名  
 }item;
@@ -20,7 +20,7 @@ typedef struct Node {
 	struct  Node* next;
 }LNode, * LinkList;                 // LinkList为结构体指针类型
 
-ElemType InitElemType(int count,int unit, double purePrice,double salePrice,const char category[], const char name[]);
+ElemType InitElemType(int count,const char unit[], double purePrice,double salePrice,const char category[], const char name[]);
 
 void InitList_L(LinkList& L);
 

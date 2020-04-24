@@ -24,6 +24,7 @@ public:
     QStandardItemModel* getCategoryModel();
     QStandardItemModel* getItemsModel(const QModelIndex &index);//基于第一个model的位置显示第二个model的数据
     QStandardItemModel* getItemsModel(int);//重载
+    QStandardItemModel* getItemsModel(LinkList);//重载
 
     void CategoryTableSet(QStandardItemModel*);
     void ItemsTableSet(QStandardItemModel*);
@@ -38,8 +39,15 @@ private slots:
     void on_goods_in_clicked();
 
     void on_goods_out_clicked();
+    
+    void on_search_category_clicked();
+
+    void on_search_name_clicked();
 
 private:
     Ui::MainWindow *ui;
+    int search_patten;
+    big_category_node default_market_node = *init_Supermarket();
+
 };
 #endif // MAINWINDOW_H

@@ -3,17 +3,13 @@
 LinkList search_Item( big_category category ,const char name[]) //查找商品
 {
 	big_category q = category;
-	while (q)
-	{
-		LinkList p = q->small_category->next;
-		while (p)
-		{
-			if (!strcmp(p->data.name, name))
-				return p;
-			p = p->next;
-		}
-		q = q->next_big_category;
-	}
+    LinkList p = q->small_category;
+    while (p)
+    {
+        if (!strcmp(p->data.name, name))
+            return p;
+        p = p->next;
+    }
 	return NULL;
 }
 
@@ -25,7 +21,7 @@ big_category search_Big_Category(big_category category, const char name[]) {
 			return p;
 		p = p->next_big_category;
 	}
-	return NULL;
+    return nullptr;
 }
 
 int search_Items_Sold_Out(big_category category)

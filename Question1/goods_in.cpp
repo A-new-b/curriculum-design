@@ -10,7 +10,7 @@ goods_in::goods_in(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->count->setValidator(new QIntValidator(nullptr));//数目只能输入int
-    ui->unit->setValidator(new QIntValidator(nullptr));//单位只能输入int
+//    ui->unit->setValidator(new QIntValidator(nullptr));//单位只能输入int
 
     ui->purePrice->setValidator(new QDoubleValidator(nullptr));
     ui->salePrice->setValidator(new QDoubleValidator(nullptr));
@@ -43,7 +43,9 @@ void goods_in::add_items_goods(int position)
     big_category p = &(father ->market_first_node);
     big_category category=find_category_byindex(p,position-1);
     int count = this ->ui ->count->text().toInt();
-    int unit = this ->ui ->unit ->text().toInt();
+    QString unit_q = this ->ui ->unit ->text();
+    char unit[15];
+    strcpy(unit,unit_q.toStdString().c_str());
     double purePrice = this ->ui ->purePrice ->text().toDouble();
     double salePrice = this ->ui ->salePrice ->text().toDouble();
     QString name_q = this ->ui ->name ->text();

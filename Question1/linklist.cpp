@@ -1,9 +1,9 @@
 #include "linklist.h"
 #include<cstring>
-ElemType InitElemType(int count,int unit, double purePrice,double salePrice,const char category[], const char name[]){
+ElemType InitElemType(int count,const char unit[], double purePrice,double salePrice,const char category[], const char name[]){
     ElemType data;
     data.count=count;
-    data.unit =unit;
+    strcpy(data.unit,unit);
     data.purePrice = purePrice;
     data.salePrice = salePrice;
     strcpy(data.category,category);
@@ -15,7 +15,7 @@ void InitList_L(LinkList& L)
 	L = (LNode*)malloc(sizeof(LNode));  // 申请存放一个结点数据所需要的内在空间
 	if (!L)   exit(1);                        // 存储分配失败
     L->next = NULL;    // 表头结点的指针域置空
-    L->data=InitElemType(0,0,0,0,"","");
+    L->data=InitElemType(0,"",0,0,"","");
 }
 
 int ListLength_L(LinkList L)
